@@ -44,7 +44,7 @@ producer = Producer(config)
 # ============================================
 # Un "tópico" en Kafka es como un canal donde se publican mensajes.
 # Vamos a usar un nombre que simule un caso real: proyectos empresariales.
-topic_kafka = 'proyectos_innovacion'
+topic_kafka = 'ventasGlobales'
 
 # ============================================
 # ENVÍO DE MENSAJES
@@ -53,13 +53,15 @@ topic_kafka = 'proyectos_innovacion'
 # Cada mensaje será un texto con información sobre proyectos y presupuestos.
 # Kafka no entiende objetos de Python directamente, por eso convertimos los datos a texto (JSON)
 # y luego a bytes, que es el formato que Kafka utiliza para transmitir información.
-for e in range(100):
+for e in range(10):
     # Creamos un diccionario con datos simulados de negocio.
     data = {
         'Proyecto': f'Innovación #{e+1}',
         'Presupuesto': f'{(e+1)*5000} EUR',
         'Estado': 'Aprobado' if e % 2 == 0 else 'En revisión'
     }
+        
+        
 
     # Convertimos el diccionario a una cadena JSON (texto estructurado).
     # dumps() transforma un objeto Python (dict) en texto JSON (str)
