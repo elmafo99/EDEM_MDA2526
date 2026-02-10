@@ -1,4 +1,5 @@
 from confluent_kafka import Consumer
+import json
 
 # ============================================
 # CONFIGURACIÓN DEL CONSUMIDOR
@@ -6,7 +7,7 @@ from confluent_kafka import Consumer
 config = {
     'bootstrap.servers': 'localhost:9092',  # Dirección del broker Kafka (como la IP de un servicio web)
     'group.id': 'grupo-consumidor',         # Identificador del grupo de consumidores
-    'auto.offset.reset': 'earliest'         # Leer desde el principio si no hay posición guardada
+    'auto.offset.reset': 'earliest' # Leer desde el principio si no hay posición guardada
 }
 
 # Creamos el consumidor con la configuración anterior
@@ -51,9 +52,12 @@ try:
             print(f"Error al recibir mensaje: {msg.error()}")
             continue
 
-        # Si el mensaje es válido, mostramos su contenido
-        # msg.value() devuelve los datos en bytes, por eso usamos decode('utf-8') para convertirlos a texto
-        print(f"Mensaje recibido: {msg.value().decode('utf-8')}")
+        # Decodificamos el mensaje
+        message_value = msg.value().decode('utf-8')
+        
+        # Aplicamos el filtro: solo mostramos mensajes que contengan la palabra "aprobado"
+        if 'aprobado' in message_value.lower():
+            print(f"Mensaje recibido: {message_value}")
 
 # ============================================
 # except:

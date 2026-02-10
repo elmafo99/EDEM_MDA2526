@@ -6,14 +6,16 @@
 
 persona = {
     "nombre": "Ana",
-    "edad": 25,
-    "ciudad": "Valencia"
+    "edad": 30,
+    "ciudad": "Valencia",
+    "profesión": "Ingeniera"
 }
 
 print("Diccionario completo:", persona)
 print("Tipo de persona:", type(persona))  # Muestra el tipo del objeto
 print("Nombre:", persona["nombre"])
 print("Tipo del nombre:", type(persona["nombre"]))  # Tipo del valor
+print("ciudad:", persona["ciudad"])
 
 # ============================================
 # EJERCICIOS:

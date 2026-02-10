@@ -27,5 +27,14 @@ print("Producto sin stock:", producto)
 # ============================================
 # EJERCICIOS:
 # 1. Añade una clave "color" con el valor "gris".
+producto["color"] = "gris"
+print("Producto con color:", producto)
+
 # 2. Cambia la marca a "HP".
+producto["marca"] = "HP"
+print("Producto con marca modificada:", producto)
 # 3. Elimina la clave "precio".
+
+del producto["precio"]
+print("Producto sin precio:", producto)
+
